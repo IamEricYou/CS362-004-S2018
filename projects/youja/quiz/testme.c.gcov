@@ -1,0 +1,87 @@
+        -:    0:Source:testme.c
+        -:    0:Graph:testme.gcno
+        -:    0:Data:testme.gcda
+        -:    0:Runs:6
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include <time.h>
+        -:    5:
+        -:    6:/**
+        -:    7: * include every lowercase letter in the alphabet
+        -:    8: * + every type of brackets (because target char has the brackets)
+        -:    9: **/
+        -:   10:const char *temp_char = " ()[]{}abcdefghijklmnopqrstuvwxyz";
+        -:   11:
+        -:   12:/**
+        -:   13: * temp_string includes a random order of the word 'reset'
+        -:   14: * I set the 'reset' word long, so it will take a longer time to match the
+        -:   15: * 'reset' word.
+        -:   16: */
+        -:   17:const char *temp_string = "rrerersesetseeeetstt";
+        -:   18:
+        -:   19:char inputChar()
+        -:   20:{
+        -:   21:	//return a char in random index.
+    14634:   22:	return temp_char[rand() % 32];
+        -:   23:}
+        -:   24:
+        -:   25:char *inputString()
+        -:   26:{
+        -:   27:	static char reset_str[5];
+    14634:   28:	int i = 0;
+    87804:   29:	for (i = 0; i < 5; i++)
+        -:   30:	{
+        -:   31:		//this array will store random word (length of 5) in temp_string
+        -:   32:		//like "rrtts", "eerst", "ttres", or "reset" <- this is a stopping point.
+    36585:   33:		reset_str[i] = temp_string[rand() % 19];
+    36585:   34:	}
+     7317:   35:	return reset_str;
+        -:   36:}
+        -:   37:
+        -:   38:void testme()
+        -:   39:{
+       12:   40:	int tcCount = 0;
+        -:   41:	char *s;
+        -:   42:	char c;
+        6:   43:	int state = 0;
+     7317:   44:	while (1)
+        -:   45:	{
+     7317:   46:		tcCount++;
+     7317:   47:		c = inputChar();
+     7317:   48:		s = inputString();
+     7317:   49:		printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
+        -:   50:
+     7565:   51:		if (c == '[' && state == 0)
+        6:   52:			state = 1;
+     7523:   53:		if (c == '(' && state == 1)
+        6:   54:			state = 2;
+     7493:   55:		if (c == '{' && state == 2)
+        6:   56:			state = 3;
+     7550:   57:		if (c == ' ' && state == 3)
+        6:   58:			state = 4;
+     7532:   59:		if (c == 'a' && state == 4)
+        6:   60:			state = 5;
+     7555:   61:		if (c == 'x' && state == 5)
+        6:   62:			state = 6;
+     7559:   63:		if (c == '}' && state == 6)
+        6:   64:			state = 7;
+     7534:   65:		if (c == ')' && state == 7)
+        6:   66:			state = 8;
+     7555:   67:		if (c == ']' && state == 8)
+        6:   68:			state = 9;
+     9769:   69:		if (s[0] == 'r' && s[1] == 'e' && s[2] == 's' && s[3] == 'e' && s[4] == 't' && s[5] == '\0' && state == 9)
+        -:   70:		{
+        6:   71:			printf("error ");
+        6:   72:			exit(200);
+        -:   73:		}
+        -:   74:	}
+    #####:   75:}
+        -:   76:
+        -:   77:int main(int argc, char *argv[])
+        -:   78:{
+        6:   79:	srand(time(NULL));
+        6:   80:	testme();
+        6:   81:	return 0;
+        -:   82:}
