@@ -39,6 +39,7 @@ void test_adv(int count){
     int yourturn = 0;
     int check_card_result = 0;
     int i = 0;
+    int temphand[500];
 
     initializeGame(random_player,k,seed,state);
     //state->whoseTurn = random_player;
@@ -48,8 +49,7 @@ void test_adv(int count){
     testState->hand[yourturn][testState->handCount[yourturn]] = adventurer;
     testState->handCount[yourturn] = testState->handCount[yourturn] + 1;
 
-    
-    adventurer_card(testState);
+    adventurerCard(0,testState,testState->whoseTurn,temphand);
     //test: gain two treasure card correclty
     for(i = 0; i < 2; i++){
         state->deck[yourturn][i] = random_tresure;
