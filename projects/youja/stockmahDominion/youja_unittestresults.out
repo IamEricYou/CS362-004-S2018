@@ -1,0 +1,271 @@
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+File 'dominion.c'
+Lines executed:31.90% of 649
+Branches executed:34.29% of 417
+Taken at least once:20.86% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test for some card cost in getCost function 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+File 'dominion.c'
+Lines executed:31.90% of 649
+Branches executed:34.29% of 417
+Taken at least once:20.86% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+TEST PASSED. THE GAME is over successfully
+TEST PASSED. THE GAME is over successfully
+File 'dominion.c'
+Lines executed:31.90% of 649
+Branches executed:34.29% of 417
+Taken at least once:20.86% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+File 'dominion.c'
+Lines executed:31.90% of 649
+Branches executed:34.29% of 417
+Taken at least once:20.86% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test case 1 - PASSED 
+Test case 2 - PASSED 
+Test case 3 - PASSED 
+File 'dominion.c'
+Lines executed:31.90% of 649
+Branches executed:34.29% of 417
+Taken at least once:20.86% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+Testing passed
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test for some card cost in getCost function 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+TESTING PASSED IN THE COST FUNCTION 
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+TEST PASSED. THE GAME is over successfully
+TEST PASSED. THE GAME is over successfully
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+TEST PASSED 
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test case 1 - PASSED 
+Test case 2 - PASSED 
+Test case 3 - PASSED 
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test - hand count - PASSED 
+Test - checking treasure card - PASSED 
+Test - checking treasure card - PASSED 
+Card deck count is decreased by 2 - PASSED 
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test case 1 - players card checking - FAILED 
+Test case 2 - Player action +2 - PASSED 
+File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+Test1 - check the player card + 3 - FAILED 
+ Test case 2 - player buy + 1 -- PASSED 
+ Test case 3 - discard the card - PASSED 
+Test case 4 - reduced deck by 4 -- FAILED 
+ File 'dominion.c'
+Lines executed:34.98% of 649
+Branches executed:37.65% of 417
+Taken at least once:23.50% of 417
+No calls
+dominion.c:creating 'dominion.c.gcov'
+

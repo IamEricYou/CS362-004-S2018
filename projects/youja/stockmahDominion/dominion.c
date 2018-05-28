@@ -688,6 +688,7 @@ int smithyCard(int currentPlayer, struct gameState *state, int handPos) {
 
 // implement council room
 int councilRoomCard(int currentPlayer, struct gameState *state, int handPos) {
+	currentPlayer = whoseTurn(state);
 	//+4 Cards
 	for (int i = 0; i < 4; i++) {
 		drawCard(currentPlayer, state);
@@ -698,7 +699,7 @@ int councilRoomCard(int currentPlayer, struct gameState *state, int handPos) {
 
 	//Each other player draws a card
 	for (int i = 0; i < state->numPlayers; i++) {
-		if ( i == currentPlayer ) {
+		if ( i != currentPlayer ) {
 			drawCard(i, state);
 		}
 	}
@@ -712,12 +713,14 @@ int councilRoomCard(int currentPlayer, struct gameState *state, int handPos) {
 // implement village card
 int villageCard(int currentPlayer, struct gameState *state, int handPos) {
 	//+1 Card
+	currentPlayer = whoseTurn(state);
 	drawCard(currentPlayer, state);
 
 	//+2 Actions
 	state->numActions = state->numActions + 2;
 
 	//discard played card from hand
+	discardCard(handPos, currentPlayer, state, 0);
 
 	return 0;
 }
@@ -1363,4 +1366,3 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
 
 //end of dominion.c
-

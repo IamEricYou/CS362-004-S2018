@@ -68,6 +68,70 @@ randomtestadventurer: randomtestadventurer.o dominion.o rngs.o test-helpers.o
 player: player.o interface.o rngs.o dominion.o
 	$(LINK)
 
+youja_unittest1: youja_unittest1.c dominion.o rngs.o
+	gcc -o youja_unittest1 -g youja_unittest1.c dominion.o rngs.o $(CFLAGS)
+
+youja_unittest2: youja_unittest2.c dominion.o rngs.o
+	gcc -o youja_unittest2 -g youja_unittest2.c dominion.o rngs.o $(CFLAGS)
+
+youja_unittest3: youja_unittest3.c dominion.o rngs.o
+	gcc -o youja_unittest3 -g youja_unittest3.c dominion.o rngs.o $(CFLAGS)
+
+youja_unittest4: youja_unittest4.c dominion.o rngs.o
+	gcc -o youja_unittest4 -g youja_unittest4.c dominion.o rngs.o $(CFLAGS)
+
+youja_cardtest1: youja_cardtest1.c dominion.o rngs.o
+	gcc -o youja_cardtest1 -g youja_cardtest1.c dominion.o rngs.o $(CFLAGS)
+
+youja_cardtest2: youja_cardtest2.c dominion.o rngs.o
+	gcc -o youja_cardtest2 -g youja_cardtest2.c dominion.o rngs.o $(CFLAGS)
+
+youja_cardtest3: youja_cardtest3.c dominion.o rngs.o
+	gcc -o youja_cardtest3 -g youja_cardtest3.c dominion.o rngs.o $(CFLAGS)
+
+youja_cardtest4: youja_cardtest4.c dominion.o rngs.o
+	gcc -o youja_cardtest4 -g youja_cardtest4.c dominion.o rngs.o $(CFLAGS)
+
+youja_unittestresults.out: youja_cardtest1 youja_cardtest2 youja_cardtest3 youja_cardtest4 youja_unittest1 youja_unittest2 youja_unittest3 youja_unittest4
+	./youja_unittest1 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_unittest2 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_unittest3 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_unittest4 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_cardtest1 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_cardtest2 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_cardtest3 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+	./youja_cardtest4 >> youja_unittestresults.out
+	gcov -b dominion.c >> youja_unittestresults.out
+
+
+youja_randomtestcard1: youja_randomtestcard1.c dominion.o rngs.o
+	gcc -o youja_randomtestcard1 -g  youja_randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+youja_randomtestcard2: youja_randomtestcard2.c dominion.o rngs.o
+	gcc -o youja_randomtestcard2 -g  youja_randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+
+youja_randomtestadventurer: youja_randomtestadventurer.c dominion.o rngs.o
+	gcc -o youja_randomtestadventurer -g youja_randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+
+youja_randomtestcard1.out: youja_randomtestcard1 
+	./youja_randomtestcard1 >> youja_randomtestcard1.out
+	gcov -b -f dominion.c >> youja_randomtestcard1.out
+
+youja_randomtestcard2.out: youja_randomtestcard2 
+	./youja_randomtestcard2 >> youja_randomtestcard2.out
+	gcov -b -f dominion.c >> youja_randomtestcard2.out
+
+youja_randomtestadventurer.out: youja_randomtestadventurer 
+	./youja_randomtestadventurer >> youja_randomtestadventurer.out
+	gcov -b -f dominion.c >> youja_randomtestadventurer.out
+
 all: playdom player 
 
 clean:
