@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 
 public class UrlValidatorTest extends TestCase {
-	UrlValidator urlValid = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
+	UrlValidator urlValid = new UrlValidator();
 	
    public UrlValidatorTest(String testName) {
       super(testName);
@@ -19,6 +19,7 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
+	   //System.out.println(urlValid.isValid("https://www.google.com"));
 	   //You can use this function to implement your manual testing	   
 	   //assertFalse(urlValid.isValid("http://www.google.com"));
 	  
@@ -56,11 +57,11 @@ public class UrlValidatorTest extends TestCase {
 			   "http://255.255.255.255",
 			   "http://userid@example.com:8080",
 			   "http://##/##",
-			   "http://google"
-			   
-			   //"https://www.google.com",
-			   //"httt://www.google.com"
-			   //"ftp://w22ww.1234.1234"
+			   "http://google",
+			   "http",
+			   "https://www.google.com",
+			   "httt://www.google.com",
+			   "ftp://w22ww.1234.1234"
 	   };
 	   
 	   ResultPair[] testpair = {
@@ -73,11 +74,11 @@ public class UrlValidatorTest extends TestCase {
 			   new ResultPair("http://255.255.255.255", true),
 			   new ResultPair("http://userid@example.com:8080", true),
 			   new ResultPair("http://##/##", false),
-			   new ResultPair("http://google", false)
-			  
-			   //new ResultPair("https://www.google.com", true)
-			   //new ResultPair("httt://www.google.com", false) //can't compile when the url doesn't start with http
-			   //new ResultPair("ftp://w22ww.1234.1234", false) //can't compile with this line
+			   new ResultPair("http://google", false),
+			   new ResultPair("http", false),
+			   new ResultPair("https://www.google.com", true),
+			   new ResultPair("httt://www.google.com", false), 
+			   new ResultPair("ftp://w22ww.1234.1234", false) 
 	   };
 	   
 	   /*System.out.println("Checking in result pair");
