@@ -150,6 +150,7 @@ public class UrlValidatorTest extends TestCase {
 			}
 			break;
 		}
+		System.out.println("The result from the good array is: " + bad_count_1 + " failed out of " + length_good + " (which was expected true) \n");
 
 		index_1 = 0;
 		index_2 = 0;
@@ -187,9 +188,6 @@ public class UrlValidatorTest extends TestCase {
 			}
 			break;
 		}
-		System.out.println("The result is: " + bad_count_1 + " failed out of " + length_good);
-		System.out.println("These " + bad_count_1 + " URL is valid, but the isValid function didn't work well");
-		System.out.println("The result is: " + bad_count_2 + " failed out of " + length_bad);
-		System.out.println("These " + bad_count_2 + " URL is invalid, but the isValid function didn't work well");
+		System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected to false");
 	}
 }
