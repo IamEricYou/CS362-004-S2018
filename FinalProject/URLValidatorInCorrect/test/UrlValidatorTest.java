@@ -17,9 +17,7 @@ public class UrlValidatorTest extends TestCase {
    
    
    public void testManualTest()
-   {
-	   System.out.println(urlValid.isValid("http://www.google.com"));
-	   //You can use this function to implement your manual testing	   
+   {//You can use this function to implement your manual testing	   
 	   //assertFalse(urlValid.isValid("http://www.google.com"));
 	  
    }
@@ -40,77 +38,158 @@ public class UrlValidatorTest extends TestCase {
    
    public void testIsValid()
    {
-	   /*
-	    *  ResultPair.java (it had a bug, so I've fixed it)
-	    * */
 		UrlValidator urlValid = new UrlValidator(null,null,UrlValidator.ALLOW_ALL_SCHEMES);
-	
-		ResultPair[] testpair = {
-			//Scheme test
-			new ResultPair("http://www.google.com", true),
-			// new ResultPair("ftp://www.google.com", true),
-			// new ResultPair("https://www.google.com", true),
-			// new ResultPair("htt://www.google.com", false),
-			// new ResultPair("http/www.google.com", false),
-			// new ResultPair("http:/?www.google.com", false),
-			// new ResultPair("http:///www.google.com", false),
-			
-			//Authority test
-			new ResultPair("http://www.amazon.com", true),
-			new ResultPair("http://255.255.255.255", true),
-			new ResultPair("http://www.oregonstate.edu", true),
-			new ResultPair("http://-error-.invalid/", false),
-			new ResultPair("http://...", false),
-			new ResultPair("http://w22ww.1234.1234", false),
-			new ResultPair("http://##/##", false),
-			new ResultPair("http://15.15.15.15", false),
-		
-			
-			//Port test
-			new ResultPair("http://userid@example.com:8080", true),
-			new ResultPair("http://www.google.com:8000", true),
-			new ResultPair("http://www.google.com:80", true),
-			new ResultPair("http://www.google.com:-10", false),
-			new ResultPair("http://www.google.com:66666", false),
-			new ResultPair("http://www.google.com:8238a", false),
 
-			//Path test
-			new ResultPair("http://www.google.com/index", true),
-			new ResultPair("http://www.google.com/index/", true),
-			new ResultPair("http://www.google.com/temp/temp", true),
-			new ResultPair("http://www.google.com/t88", true),
-			new ResultPair("http://www.google.com/../", false),
-			new ResultPair("http://www.google.com/../..", false),
-			new ResultPair("http://www.google.com/..//index", false),
+		// scheme doesn't work well with isValid
+		String[] schemes_good = {
+			"http://"
+			//"ftp://",
+			//"h3t://",
+			//""
+		};	
 
-			//Query test
-			new ResultPair("http://www.google.com?action=view", true),
-			new ResultPair("http://www.google.com?action=edit=temp", true),
-			new ResultPair("http://www.google.com?set=true&temp=val", true),
-			new ResultPair("http://www.google.com??!?$", false),
-			new ResultPair("http://www.google.com!#", false)
+		// scheme doesn't work well with isValid
+		String[] schemes_bad = {
+			"3ht://",
+			"http:/",
+			"htttP://",
+			"http:",
+			"://"
 		};
+
+		String[] authority_good = {
+			"www.google.com",
+			"www.amazon.com",
+			"www.facebook.com",
+			"0.0.0.0",
+			"255.255.255.255",
+			"255.com"
+		};
+
+		String[] authority_bad = {
+			"w1w1w.google.com",
+			"zzz.zzz.zzz",
+			"@.@.@.@",
+			".1.2.3.4",
+			"www.@#!@#.$$$",
+			"300.300.300.300",
+			"go.a",
+			"aaa",
+			"",
+			"255.255.255.255.255"
+		};
+
+		String[] port_good ={
+			":80",
+			":65535",
+			":0",
+			""
+		};
+
+		String[] port_bad = {
+			":65636",
+			":-1",
+			":44a",
+			":-aaaa"
+		};
+
+		String[] path_good = {
+			"/temp",
+			"/temp12",
+			"/index_1",
+			"/index/",
+			"/index/file",
+			"/$333",
+			"/",
+			""
+		};
+
+		String[] path_bad = {
+			"/../",
+			"///",
+			"/../..",
+			"/../index",
+			"/index//file",
+			"/./"
+		};
+
+		int bad_count_1 = 0;
+		int bad_count_2 = 0;
+		int index_1 = 0;
+		int index_2 = 0;
+		int index_3 = 0;
+		int index_4 = 0;
 		
-	   /*System.out.println("Checking in result pair");
-	   for(int i=0; i < testpair.length; i++) {
-		   System.out.println("Check the URL: " + testpair[i].item + " -> " + testpair[i].valid );
-	   }
-	   
-	   System.out.println("Checking in isValid() function");
-	   for(int i = 0; i < testunit.length; i++) {
-		   System.out.println("Check the URL: " + testunit[i]+ " -> " + urlValid.isValid(testunit[i]));
-	   }*/
-	   
-	   int bad_count = 0;
-	   
-	   System.out.println("Check the result");
-	   for(int i = 0; i < testpair.length; i++) {
-		   if(testpair[i].valid != urlValid.isValid(testpair[i].item)) {
-			   bad_count++;
-			   System.out.println("This case is failed: " + testpair[i].item );
-		   }
-	   }
-	   System.out.println("The result is: " + bad_count + " failed out of " + testpair.length);
-   }
-   
+		int length_good = schemes_good.length * authority_good.length * port_good.length  * path_good.length;
+		int length_bad = authority_bad.length * port_bad.length  * path_bad.length; // scheme doesn't work well with isValid
+		// int length_bad = schemes_bad.length * authority_bad.length * port_bad.length  * path_bad.length;
+		while(true){
+			String temp_good = schemes_good[index_1] + authority_good[index_2] + port_good[index_3] + path_good[index_4];
+			if(!urlValid.isValid(temp_good)){
+				System.out.println("This good case is failed to pass " + temp_good);
+				bad_count_1++;
+			}
+			if(index_1 < schemes_good.length-1){
+				index_1++;
+				continue;
+			}
+
+			if(index_2 < authority_good.length-1){
+				index_2++;
+				continue;
+			}
+
+			if(index_3 < port_good.length-1){
+				index_3++;
+				continue;
+			}
+
+			if(index_4 < path_good.length-1){
+				index_4++;
+				continue;
+			}
+			break;
+		}
+
+		index_1 = 0;
+		index_2 = 0;
+		index_3 = 0;
+		index_4 = 0;
+
+		while(true){
+			//String temp = schemes_bad[index_1] + authority_bad[index_2] + port_bad[index_3] + path_bad[index_4];
+			String temp_bad = schemes_good[index_1] + authority_bad[index_2] + port_bad[index_3] + path_bad[index_4];
+			
+			if(urlValid.isValid(temp_bad)){
+				System.out.println("This bad case is failed to pass " + temp_bad);
+				bad_count_2++;
+			}
+
+			// scheme doesn't work well with isValid
+			/*if(index_1 < schemes_bad.length-1){
+				index_1++;
+				continue;
+			}*/
+
+			if(index_2 < authority_bad.length-1){
+				index_2++;
+				continue;
+			}
+
+			if(index_3 < port_bad.length-1){
+				index_3++;
+				continue;
+			}
+
+			if(index_4 < path_bad.length-1){
+				index_4++;
+				continue;
+			}
+			break;
+		}
+		System.out.println("The result is: " + bad_count_1 + " failed out of " + length_good);
+		System.out.println("These " + bad_count_1 + " URL is valid, but the isValid function didn't work well");
+		System.out.println("The result is: " + bad_count_2 + " failed out of " + length_bad);
+		System.out.println("These " + bad_count_2 + " URL is invalid, but the isValid function didn't work well");
+	}
 }
