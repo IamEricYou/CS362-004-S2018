@@ -42,13 +42,14 @@ public class UrlValidatorTest extends TestCase {
 
 		// scheme doesn't work well with isValid
 		String[] schemes_good = {
-			"http://"
-			//"ftp://",
-			//"h3t://",
-			//""
+			"http://",
+			"ftp://",
+			"h3t://",
+			""
 		};	
 
 		// scheme doesn't work well with isValid
+		//It is working now somehow
 		String[] schemes_bad = {
 			"3ht://",
 			"http:/",
@@ -121,8 +122,8 @@ public class UrlValidatorTest extends TestCase {
 		int index_4 = 0;
 		
 		int length_good = schemes_good.length * authority_good.length * port_good.length  * path_good.length;
-		int length_bad = authority_bad.length * port_bad.length  * path_bad.length; // scheme doesn't work well with isValid
-		// int length_bad = schemes_bad.length * authority_bad.length * port_bad.length  * path_bad.length;
+		//int length_bad = authority_bad.length * port_bad.length  * path_bad.length; // scheme doesn't work well with isValid
+		int length_bad = schemes_bad.length * authority_bad.length * port_bad.length  * path_bad.length;
 		while(true){
 			String temp_good = schemes_good[index_1] + authority_good[index_2] + port_good[index_3] + path_good[index_4];
 			if(!urlValid.isValid(temp_good)){
@@ -159,7 +160,7 @@ public class UrlValidatorTest extends TestCase {
 
 		while(true){
 			//String temp = schemes_bad[index_1] + authority_bad[index_2] + port_bad[index_3] + path_bad[index_4];
-			String temp_bad = schemes_good[index_1] + authority_bad[index_2] + port_bad[index_3] + path_bad[index_4];
+			String temp_bad = schemes_bad[index_1] + authority_bad[index_2] + port_bad[index_3] + path_bad[index_4];
 			
 			if(urlValid.isValid(temp_bad)){
 				System.out.println("This bad case is failed to pass " + temp_bad);
@@ -167,10 +168,11 @@ public class UrlValidatorTest extends TestCase {
 			}
 
 			// scheme doesn't work well with isValid
-			/*if(index_1 < schemes_bad.length-1){
+			//It is working now somehow
+			if(index_1 < schemes_bad.length-1){
 				index_1++;
 				continue;
-			}*/
+			}
 
 			if(index_2 < authority_bad.length-1){
 				index_2++;
@@ -188,6 +190,6 @@ public class UrlValidatorTest extends TestCase {
 			}
 			break;
 		}
-		System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected to false");
+		System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected false");	
 	}
 }
