@@ -251,15 +251,15 @@ public class UrlValidatorTest extends TestCase {
 	   
 		// 0
 	   System.out.print("\n0 Expect False");
-	   assertEqual(urlVal, "http://www.google.com:0", true); 
+	   assertEqual(urlVal, "http://www.google.com:0", false); 
 	   
 		// -1
 	   System.out.print("\n-1 Expect True");
-	   assertEqual(urlVal, "http://www.google.com:-1", true); 
+	   assertEqual(urlVal, "http://www.google.com:-1", false); 
 	   
 		// 65536
 	   System.out.print("\n65536 Expect True");
-	   assertEqual(urlVal, "http://www.google.com:65536", true); 
+	   assertEqual(urlVal, "http://www.google.com:65536", false); 
 	   
    }
    
@@ -448,7 +448,7 @@ public class UrlValidatorTest extends TestCase {
 			}
 			break;
 		}
-		System.out.println("The result from the good array is: " + bad_count_1 + " failed out of " + length_good + " (which was expected true) \n");
+		//System.out.println("The result from the good array is: " + bad_count_1 + " failed out of " + length_good + " (which was expected true) \n");
 
 		index_1 = 0;
 		index_2 = 0;
@@ -494,7 +494,7 @@ public class UrlValidatorTest extends TestCase {
 			}
 			break;
 		}
-		System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected false)");	
+		//System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected false)");	
 		
 		//This doens't work for the current buggy version
 		/*String[] both_scheme = new String[schemes_good.length + schemes_bad.length];
