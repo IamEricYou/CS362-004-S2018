@@ -326,7 +326,6 @@ public class UrlValidatorTest extends TestCase {
    {
 		UrlValidator urlValid = new UrlValidator(null,null,UrlValidator.ALLOW_ALL_SCHEMES);
 
-
 		// scheme doesn't work well with isValid
 		String[] schemes_good = {
 			"http://"
@@ -468,7 +467,6 @@ public class UrlValidatorTest extends TestCase {
 			}
 
 			// scheme doesn't work well with isValid
-			//It is working now somehow
 			if(index_1 < schemes_good.length-1){
 				index_1++;
 				continue;
@@ -497,5 +495,94 @@ public class UrlValidatorTest extends TestCase {
 			break;
 		}
 		System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected false)");	
+		
+		//This doens't work for the current buggy version
+		/*String[] both_scheme = new String[schemes_good.length + schemes_bad.length];
+		System.arraycopy(schemes_good, 0, both, 0, schemes_good.length);
+		System.arraycopy(schemes_bad, 0, both, schemes_good.length, schemes_bad.length);
+		*/
+		
+		String[] both_auth = new String[authority_good.length + authority_bad.length];
+		System.arraycopy(authority_good, 0, both_auth, 0, authority_good.length);
+		System.arraycopy(authority_bad, 0, both_auth, authority_good.length, authority_bad.length);
+
+		String[] both_port = new String[port_good.length + port_bad.length];
+		System.arraycopy(port_good, 0, both_port, 0, port_good.length);
+		System.arraycopy(port_bad, 0, both_port, port_good.length, port_bad.length);
+
+		String[] both_path = new String[path_good.length + path_bad.length];
+		System.arraycopy(path_good, 0, both_path, 0, path_good.length);
+		System.arraycopy(path_bad, 0, both_path, path_good.length, path_bad.length);
+
+		index_1 = 0;
+		index_2 = 0;
+		index_3 = 0;
+		index_4 = 0;
+		int bad_count = 0;
+		//Change this line if schemes work fine
+		int length_total = schemes_good.length * both_auth.length * both_port.length  * both_path.length;
+		while(true){
+			boolean truth = true;
+			//String temp_total = schemes_good[index_1] + both_auth[index_2] + both_port[index_3] + both_path[index_4];
+			String temp_total = schemes_good[index_1] + both_auth[index_2] + both_port[index_3] + both_path[index_4];
+
+			for(int i = 0; i < authority_bad.length; i++){
+				if(authority_bad[i] == both_auth[index_2]){
+					//System.out.println(authority_bad[i] + " " + both_auth[index_2]);
+					truth = false;
+				}
+			}
+
+			for(int i = 0; i < port_bad.length; i++){
+				if(port_bad[i] == both_port[index_3]){
+					//System.out.println(port_bad[i] + " " + both_port[index_3]);
+					truth = false;
+				}
+			}
+
+			for(int i = 0; i < path_bad.length; i++){
+				if(path_bad[i] == both_path[index_4]){
+					//System.out.println(path_bad[i] + " " + both_path[index_4]);
+					truth = false;
+				}
+			}
+
+			if(urlValid.isValid(temp_total) != truth){
+				//System.out.println("Fail to pass :" + temp_total);
+				bad_count++;
+			}
+
+			// scheme doesn't work well with isValid
+			if(index_1 < schemes_good.length-1){
+				index_1++;
+				continue;
+			}
+
+			if(index_2 < both_auth.length-1){
+				index_2++;
+				index_1 = 0;
+				continue;
+			}
+
+			if(index_3 < both_port.length-1){
+				index_3++;
+				index_1 = 0;
+				index_2 = 0;
+				continue;
+			}
+
+			if(index_4 < both_path.length-1){
+				index_4++;
+				index_1 = 0;
+				index_2 = 0;
+				index_3 = 0;
+				continue;
+			}
+			break;
+		}
+		System.out.println("The result from the good array is: " + bad_count_1 + " failed out of " + length_good + " (which was expected true)");
+		System.out.println("The result from the bad array is: " + bad_count_2 + " failed out of " + length_bad + " (which was expected false)");
+		System.out.println("The result from the total array is: " + bad_count + " failed out of " + length_total);	
+		
 	}
 }
