@@ -8,11 +8,18 @@ import junit.framework.TestCase;
 
 
 public class UrlValidatorTest extends TestCase {
-	
 	public UrlValidatorTest(String testName) {
 		super(testName);
 	 }
 
+	public void UrlValidatorTest(boolean retVal, boolean expectVal) {
+		if (retVal == expectVal) {
+			System.out.print("Test Passed\n");
+		} else {
+			System.out.print("Test Failed\n");
+		}
+	 }
+	
 	public void assertEqual(UrlValidator urlVal, String query, boolean expVal) {
 		boolean retVal;
 		try {
@@ -29,16 +36,7 @@ public class UrlValidatorTest extends TestCase {
 		}
 	}
 	
-	
-   public UrlValidatorTest(boolean retVal, boolean expectVal) {
-      if (retVal == expectVal) {
-		  System.out.print("Test Passed\n");
-	  } else {
-		  System.out.print("Test Failed\n");
-	  }
-   }
    
-   /*
    public void testManualTest()
    {
 	   //You can use this function to implement your manual testing	   
@@ -176,9 +174,7 @@ public class UrlValidatorTest extends TestCase {
 	   UrlValidatorTest(urlVal.isValid("www.testcase.com?test=true"), true);
 
    }
-   
-   */
-   
+
    public void testYourFourthPartition(){
 	   // scheme partition
 	   
@@ -190,16 +186,16 @@ public class UrlValidatorTest extends TestCase {
 	   assertEqual(urlVal, "http://www.google.com", true); 
 	   
 		//https
-	   System.out.print("\nHTTPS: Expect True");
-	   assertEqual(urlVal, "https://www.google.com", true); 
+	   //System.out.print("\nHTTPS: Expect True");
+	   //assertEqual(urlVal, "https://www.google.com", true); 
 	   
 		//ftp
-	   System.out.print("\nFTP: Expect True");
-	   assertEqual(urlVal, "ftp://www.facebook.com", true); 
+	   //System.out.print("\nFTP: Expect True");
+	   //assertEqual(urlVal, "ftp://www.facebook.com", true); 
 	   
 		//made up scheme
-	   System.out.print("\nabc: Expect False");
-	   assertEqual(urlVal, "abc://www.facebook.com", false); 
+	   //System.out.print("\nabc: Expect False");
+	   //assertEqual(urlVal, "abc://www.facebook.com", false); 
    }
    
    public void testYourFifthPartition(){
